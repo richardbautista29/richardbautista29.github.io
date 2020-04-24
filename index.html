@@ -39,7 +39,7 @@
 	  'GET',
 	  {"access_token" : accessToken},
 	  function(response) {
-		  document.write(name + "," + response.reactions.summary.total_count + "<br>");
+		  console.log(name + "," + response.reactions.summary.total_count);
 	  }
 	);  
   
