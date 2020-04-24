@@ -23,7 +23,8 @@
 	  function(response) {
 		  for(i=0; i<response.data.length; i++)
 		  {
-			console.log(response.data[i].from.name + " : " + getReactions(response.data[i].id));
+			var reaxCount = getReactions(response.data[i].id);
+			console.log(response.data[i].from.name + " : " + reaxCount);
 		  }
 	  }
 	);
@@ -33,12 +34,13 @@
   
   function getReactions(id)
   {
+  
 	FB.api(
 	  id + '?fields=reactions.summary(total_count)',
 	  'GET',
 	  {"access_token" : accessToken},
 	  function(response) {
-		  console.log(response.reactions.summary.total_count);  
+		  return response.reactions.summary.total_count;
 	  }
 	);
   
