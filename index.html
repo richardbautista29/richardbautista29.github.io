@@ -19,7 +19,10 @@
 	  {"filter":"toplevel","summary":"1","order":"chronological","limit":"500","fields":"id"},
 	  function(response) {
 		  console.log(response);
-		  console.log(response.summary);
+		  for(i=0; i<response.data.length; i++)
+		  {
+			console.log(response.data[i]);
+		  }
 	  }
 	);
 	
