@@ -34,17 +34,17 @@
   
   function getReactions(id)
   {
-  
+	var cnt = 0;
 	FB.api(
 	  id + '?fields=reactions.summary(total_count)',
 	  'GET',
 	  {"access_token" : accessToken},
 	  function(response) {
-		  return response.reactions.summary.total_count;
+		  cnt = response.reactions.summary.total_count;
 	  }
 	);
   
-  
+	return cnt;
   
   }
 </script>
