@@ -23,8 +23,8 @@
 	  function(response) {
 		  for(i=0; i<response.data.length; i++)
 		  {
-			var reaxCount = getReactions(response.data[i].id);
-			console.log(response.data[i].from.name + " : " + reaxCount);
+			getReactions(response.data[i].from.name, response.data[i].id);
+
 		  }
 	  }
 	);
@@ -32,19 +32,16 @@
 	
   };
   
-  function getReactions(id)
+  function getReactions(name,id)
   {
-	var cnt;
 	FB.api(
 	  id + '?fields=reactions.summary(total_count)',
 	  'GET',
 	  {"access_token" : accessToken},
 	  function(response) {
-		  cnt = response.reactions.summary.total_count;
+		  console.log(name + " : " + response.reactions.summary.total_count);
 	  }
-	);
-  
-	console.log(cnt);
+	);  
   
   }
 </script>
