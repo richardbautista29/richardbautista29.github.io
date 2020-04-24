@@ -22,10 +22,9 @@
 	  {"filter":"toplevel","summary":"1","order":"chronological","limit":"1000","fields":"id,from","access_token" : accessToken},
 	  function(response) {
 		  console.log(response);
-		  for(i=0; i<response.data.length-200; i++)
+		  for(i=0; i<response.data.length; i++)
 		  {
-			console.log(response.data[i].from.name + " : " + response.data[i].id);
-			getReactions(response.data[i].id);
+			console.log(response.data[i].from.name + " : " + getReactions(response.data[i].id);
 		  }
 	  }
 	);
@@ -40,7 +39,7 @@
 	  'GET',
 	  {"access_token" : accessToken},
 	  function(response) {
-		  console.log(response);  
+		  return response.reactions.summary.total_count;  
 	  }
 	);
   
