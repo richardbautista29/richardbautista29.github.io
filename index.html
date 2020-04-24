@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>QuaranTreats</title>
+</head>
+<body>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '556278011536079',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v6.0'
+    });
+	
+	
+	FB.api(
+	  '/103424014687723_103617644668360/comments',
+	  'GET',
+	  {"filter":"toplevel","summary":"1","order":"chronological","limit":"500","fields":"id"},
+	  function(response) {
+		  // Insert your code here
+	  }
+	);
+	
+	
+  };
+</script>
+<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+
+</body>
+</html>
