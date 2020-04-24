@@ -21,14 +21,11 @@
 	  'GET',
 	  {"filter":"toplevel","summary":"1","order":"chronological","limit":"1000","fields":"id,from","access_token" : accessToken},
 	  function(response) {
-			document.write("<table>");
 		  for(i=0; i<response.data.length; i++)
 		  {
-			document.write("<tr>");
 			getReactions(response.data[i].from.name, response.data[i].id);
-			document.write("</tr>");
 		  }
-			document.write("</table>");
+			
 	  }
 	);
 	
@@ -42,7 +39,7 @@
 	  'GET',
 	  {"access_token" : accessToken},
 	  function(response) {
-		  document.write("<td>" + name + "</td><td>" + response.reactions.summary.total_count + "</td>");
+		  document.write(name + "," + response.reactions.summary.total_count + "<br>");
 	  }
 	);  
   
