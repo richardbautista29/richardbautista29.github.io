@@ -34,7 +34,7 @@
   
   function getReactions(id)
   {
-	var cnt = 0;
+	var cnt;
 	FB.api(
 	  id + '?fields=reactions.summary(total_count)',
 	  'GET',
