@@ -19,9 +19,7 @@
 	  {"filter":"toplevel","summary":"1","order":"chronological","limit":"500","fields":"id"},
 	  function(response) {
 		  console.log(response);
-		  console.log('HAHA');
-		  var comments = JSON.parse(response);
-		  console.log(JSON.stringify(comments.summary));
+		  console.log(response.summary);
 	  }
 	);
 	
