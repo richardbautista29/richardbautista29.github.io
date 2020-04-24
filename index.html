@@ -4,6 +4,9 @@
 </head>
 <body>
 <script>
+
+	var accessToken = 'EAAH57pFGIs8BAC2hjI5ZAgz4KuftS9T31vnms0AVthxJRRRYjRbRY2g2lpSc5IaxKPkyKQpZBqQmfy8KtvDZATvJWyDnShwzA39ZCV7M8JF7bklv4a2PFtryme3WL2ZAzZAUgjeycqyZBErJMGbgK25j1g8BlQd4HWsZCxZBy89ZAN5J177R2PixyqcRFoA5J0l6IZD';
+
   window.fbAsyncInit = function() {
     FB.init({
       appId            : '556278011536079',
@@ -14,20 +17,36 @@
 	
 	
 	FB.api(
-	  '/103424014687723_103617644668360/comments?access_token=EAAH57pFGIs8BAC2hjI5ZAgz4KuftS9T31vnms0AVthxJRRRYjRbRY2g2lpSc5IaxKPkyKQpZBqQmfy8KtvDZATvJWyDnShwzA39ZCV7M8JF7bklv4a2PFtryme3WL2ZAzZAUgjeycqyZBErJMGbgK25j1g8BlQd4HWsZCxZBy89ZAN5J177R2PixyqcRFoA5J0l6IZD',
+	  '/103424014687723_103617644668360/comments',
 	  'GET',
-	  {"filter":"toplevel","summary":"1","order":"chronological","limit":"1000","fields":"id,from"},
+	  {"filter":"toplevel","summary":"1","order":"chronological","limit":"1000","fields":"id,from","access_token" : accessToken},
 	  function(response) {
 		  console.log(response);
 		  for(i=0; i<response.data.length-200; i++)
 		  {
 			console.log(response.data[i].from.name + " : " + response.data[i].id);
+			getReactions(response.data[i].id);
 		  }
 	  }
 	);
 	
 	
   };
+  
+  function getReactions(id)
+  {
+	FB.api(
+	  id + '?fields=reactions.summary(total_count)',
+	  'GET',
+	  {"access_token" : accessToken},
+	  function(response) {
+		  console.log(response);  
+	  }
+	);
+  
+  
+  
+  }
 </script>
 <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 
