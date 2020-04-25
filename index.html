@@ -36,6 +36,7 @@ $(document).ready(function(){
 			getReactions(response.data[i].from.name, response.data[i].id);
 		  }
 			
+		console.log(rankings);
 	  }
 	);
 	
@@ -57,8 +58,10 @@ $(document).ready(function(){
 							"name" : name,
 							"id" : strId
 							});
-			  console.log(rankings);
-			  document.write(name + "," + response.reactions.summary.total_count + ", <a href = 'https://web.facebook.com/quarantreats2020/posts/103617644668360?comment_id=" + strId + "'>VISIT</a><br>");
+			  
+			  rankings.sort((a, b) => a.totCount - b.totCount);
+			  
+			  //document.write(name + "," + response.reactions.summary.total_count + ", <a href = 'https://web.facebook.com/quarantreats2020/posts/103617644668360?comment_id=" + strId + "'>VISIT</a><br>");
 		  }
 	  }
 	);  
