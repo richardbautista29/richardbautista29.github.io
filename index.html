@@ -62,12 +62,15 @@ $(document).ready(function(){
 			  
 			  
 			var strDisplay = "";
+			var strShare = "";
 			for(j=0;j<rankings.length;j++)
 			{
 				strDisplay = strDisplay + (j+1) + ". " + rankings[j].name + ", (" + rankings[j].totCount + " reactions), <a href = 'https://www.facebook.com/quarantreats2020/posts/103617644668360?comment_id=" + rankings[j].id + "'>VISIT</a><br>";
+				strShare = strShare + (j+1) + ". " + rankings[j].name + ", (" + rankings[j].totCount + " reactions)";
 			}
 			
 			$('#result').html(strDisplay);
+			$('#forSharing').html(strShare);
 			  
 			  
 			  //document.write(name + "," + response.reactions.summary.total_count + ", <a href = 'https://web.facebook.com/quarantreats2020/posts/103617644668360?comment_id=" + strId + "'>VISIT</a><br>");
@@ -83,6 +86,10 @@ Access Token: <input type = "text" id = "accessTok" />
 <input type = "button" id = "getdata" value = "GO!" />
 
 <div id = "result">
+</div>
+
+<br><br> ==================== <br>
+<div id = "forSharing">
 </div>
 
 </body>
