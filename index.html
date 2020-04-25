@@ -35,8 +35,9 @@ $(document).ready(function(){
 		  version          : 'v6.0'
 		});
 		
-		
+		rankings = [];
 		accessToken = $('#accessTok').val();
+		reactNum = $('#minReact').val();
 	
 		FB.api(
 	  '/103424014687723_103617644668360/comments',
@@ -64,14 +65,14 @@ $(document).ready(function(){
 	
   };
   
-  function getReactions(name,id)
+  function getReactions(name,id,reactNum)
   {
 	FB.api(
 	  id + '?fields=reactions.summary(total_count)',
 	  'GET',
 	  {"access_token" : accessToken},
 	  function(response) {
-		  if(response.reactions.summary.total_count > 70)
+		  if(response.reactions.summary.total_count > reactNum)
 		  {
 			  var strId = ('' + id).replace('103617644668360_','');
 			  rankings.push({
@@ -116,6 +117,7 @@ $(document).ready(function(){
 <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 
 Access Token: <input type = "text" id = "accessTok" />
+Pull entries with more than: <input type = "text" id = "minReact" /> reactions
 <input type = "button" id = "getdata" value = "GO!" />
 
 <div id = "result">
