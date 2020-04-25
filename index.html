@@ -70,6 +70,7 @@ $(document).ready(function(){
 				strDisplay = strDisplay + (j+1) + ". " + rankings[j].name + "," + rankings[j].totCount + ", <a href = 'https://web.facebook.com/quarantreats2020/posts/103617644668360?comment_id=" + rankings[j].id + "'>VISIT</a><br>";
 			}
 			console.log(strDisplay);
+			$('#result').html(strDisplay);
 			  
 			  
 			  //document.write(name + "," + response.reactions.summary.total_count + ", <a href = 'https://web.facebook.com/quarantreats2020/posts/103617644668360?comment_id=" + strId + "'>VISIT</a><br>");
