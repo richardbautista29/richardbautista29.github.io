@@ -49,7 +49,8 @@ $(document).ready(function(){
 	  'GET',
 	  {"access_token" : accessToken},
 	  function(response) {
-		  document.write(name + "," + response.reactions.summary.total_count + "<br>");
+		  var strId = ('' + id).replace('103617644668360_','');
+		  document.write(name + "," + response.reactions.summary.total_count + "https://web.facebook.com/quarantreats2020/posts/103617644668360?comment_id=" + strId + "<br>");
 		  console.log(name + "," + id);
 	  }
 	);  
