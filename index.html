@@ -6,8 +6,6 @@
 <script>
 $(document).ready(function(){
 
-  alert('hehe');
-
 });
 </script>
 
@@ -50,7 +48,7 @@ $(document).ready(function(){
 	  {"access_token" : accessToken},
 	  function(response) {
 		  var strId = ('' + id).replace('103617644668360_','');
-		  document.write(name + "," + response.reactions.summary.total_count + "https://web.facebook.com/quarantreats2020/posts/103617644668360?comment_id=" + strId + "<br>");
+		  document.write(name + "," + response.reactions.summary.total_count + ", <a href = 'https://web.facebook.com/quarantreats2020/posts/103617644668360?comment_id=" + strId + "'>VISIT</a><br>");
 	  }
 	);  
   
