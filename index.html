@@ -46,7 +46,7 @@ $(document).ready(function(){
 	  function(response) {
 		  for(i=0; i<response.data.length; i++)
 		  {
-			getReactions(response.data[i].from.name, response.data[i].id);
+			getReactions(response.data[i].from.name, response.data[i].id, reactNum);
 		  }
 			
 	  }
@@ -116,8 +116,8 @@ $(document).ready(function(){
 </script>
 <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 
-Access Token: <input type = "text" id = "accessTok" />
-Pull entries with more than: <input type = "text" id = "minReact" /> reactions
+Access Token: <input type = "text" id = "accessTok" /><br>
+Pull entries with more than: <input type = "text" id = "minReact" /> reactions.
 <input type = "button" id = "getdata" value = "GO!" />
 
 <div id = "result">
