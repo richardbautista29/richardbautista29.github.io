@@ -13,20 +13,16 @@ $(document).ready(function(){
 <body>
 <script>
 
-	var accessToken = 'EAAH57pFGIs8BAF1BLZAnE5uLCaEPYCwD4GnAIeM0oLDM0irVZACc0pXJiZBuPNh1v0zOPoZAa4Eg2wsgXjeyIUXjMZAQLYJsrfxTRq6XdQbHLo6q01B5c1Rw9RTXJ5VJZAiQluarRZCQD6AvOx24uJpyScMsulMMTIqsXy2Y7545ZAMXMklZAjFEZCTI8aobWNRfoZD';
+	var accessToken = "";
 	
 	var rankings = [];
 	
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId            : '556278011536079',
-      autoLogAppEvents : true,
-      xfbml            : true,
-      version          : 'v6.0'
-    });
+	function runNow()
+	{
 	
+		accessToken = $('#accessTok').val();
 	
-	FB.api(
+		FB.api(
 	  '/103424014687723_103617644668360/comments',
 	  'GET',
 	  {"filter":"toplevel","summary":"1","order":"chronological","limit":"1000","fields":"id,from","access_token" : accessToken},
@@ -39,6 +35,16 @@ $(document).ready(function(){
 	  }
 	);
 	
+	}
+	
+	
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '556278011536079',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v6.0'
+    });
 	
   };
   
