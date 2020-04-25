@@ -1,11 +1,21 @@
 <html>
 <head>
 <title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+
+  alert('hehe');
+
+});
+</script>
+
 </head>
 <body>
 <script>
 
-	var accessToken = 'EAAH57pFGIs8BAC2hjI5ZAgz4KuftS9T31vnms0AVthxJRRRYjRbRY2g2lpSc5IaxKPkyKQpZBqQmfy8KtvDZATvJWyDnShwzA39ZCV7M8JF7bklv4a2PFtryme3WL2ZAzZAUgjeycqyZBErJMGbgK25j1g8BlQd4HWsZCxZBy89ZAN5J177R2PixyqcRFoA5J0l6IZD';
+	var accessToken = 'EAAH57pFGIs8BAAZA8dGhxiadOd2KPZCUisSFeNJkJeJQZALJSWykeSdRkU3FEI0Bxe2UxbTrwCdbryTfyB8K2kNeC9tKpgZCSIFlgEMZAK8RoUPZC8td7k7qvp77MVe6KIOIXZAioXYEkYvZAYSZAkg9SJIMR9icNXmYgG8ImvhLymwSrxBHzmAWmd82njswAscwAPfLf3sZCK0QZDZD';
 
   window.fbAsyncInit = function() {
     FB.init({
@@ -46,6 +56,9 @@
   }
 </script>
 <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+Access Token: <input type = "text" id = "accessTok" />
+<input type = "button" id = "getdata" value = "GO!" />
 
 
 </body>
