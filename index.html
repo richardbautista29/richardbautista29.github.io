@@ -20,7 +20,16 @@ $(document).ready(function(){
 	
 	function runNow()
 	{
-	
+		alert('lol');
+		
+		FB.init({
+		  appId            : '556278011536079',
+		  autoLogAppEvents : true,
+		  xfbml            : true,
+		  version          : 'v6.0'
+		});
+		
+		
 		accessToken = $('#accessTok').val();
 	
 		FB.api(
@@ -96,6 +105,7 @@ $(document).ready(function(){
   
   
   $('#getdata').click(function(){
+		alert('test');
 		runNow();
 	});
   
