@@ -53,6 +53,7 @@ $(document).ready(function(){
 		pageId = $('#pageId').val();
 		gameTitle = $('#gameTitle').val();
 		prizeDetails = $('#prizeDetails').val();
+		prizeDetails = prizeDetails.replace(/\r?\n/g, '<br />');
 		
 		FB.api(
 	  '/' + pageId + '_' + postId + '/comments',
@@ -104,7 +105,7 @@ $(document).ready(function(){
 			//result header
 			var strShare ="<table border=1>";
 			strShare = strShare + "<tr><td>UPDATED as of " + new Date().toLocaleString() + "</td></tr>";
-			strShare = strShare + "<tr><td><h3>" + gameTitle + "</h3></td></tr>";
+			strShare = strShare + "<tr><td>" + gameTitle + "</td></tr>";
 			strShare = strShare + "<tr><td>" + prizeDetails + "</td></tr>";
 			
 			
@@ -168,6 +169,7 @@ $(document).ready(function(){
 	<td><input type = "button" id = "getdata" value = "GO!" style="width: 100%;" /></td>
 </table>
 </div>
+<br><br>
 
 <div id = "forSharing">
 </div>
