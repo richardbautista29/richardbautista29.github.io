@@ -6,6 +6,11 @@
 <script>
 $(document).ready(function(){
 	
+	$('#showDashboard').click(function(){
+		$('#dashboard').toggle();
+	});
+	
+	
 	$('#getdata').click(function(){
 	
 		$('#result').html("");
@@ -27,6 +32,9 @@ $(document).ready(function(){
 	var accessToken = "";
 	
 	var rankings = [];
+	var pageId;
+	var postId;
+	var gameTitle;
 	
 	function runNow()
 	{
@@ -41,9 +49,13 @@ $(document).ready(function(){
 		rankings = [];
 		accessToken = $('#accessTok').val();
 		reactNum = $('#minReact').val();
-	
+		postId = $('#postId').val();
+		pageId = $('#pageId').val();
+		gameTitle = $('#gameTitle').val();
+		prizeDetails = $('#prizeDetails').val();
+		
 		FB.api(
-	  '/103424014687723_103617644668360/comments',
+	  '/' + pageId + '_' + postId + '/comments',
 	  'GET',
 	  {"filter":"toplevel","summary":"1","order":"chronological","limit":"1000","fields":"id,from","access_token" : accessToken},
 	  function(response) {
@@ -77,7 +89,7 @@ $(document).ready(function(){
 	  function(response) {
 		  if(response.reactions.summary.total_count > reactNum)
 		  {
-			  var strId = ('' + id).replace('103617644668360_','');
+			  var strId = ('' + id).replace(postId + '_','');
 			  rankings.push({
 							"totCount" : response.reactions.summary.total_count,
 							"name" : name,
@@ -88,20 +100,23 @@ $(document).ready(function(){
 			  
 			  
 			var strDisplay = "";
-			var strShare = "UPDATED RANKING as of " + new Date().toLocaleString() + "<br><br><h3>QuaranTreats's Cutest Quarantine Pic Challenge</h3>PRIZES:<br>Top 1 to 3: 100php load each<br>Top 4 to 10: 50php load each<br><br>";
+			
+			//result header
+			var strShare ="<table border=1>";
+			strShare = strShare + "<tr><td>UPDATED as of " + new Date().toLocaleString() + "</td></tr>";
+			strShare = strShare + "<tr><td><h3>" + gameTitle + "</h3></td></tr>";
+			strShare = strShare + "<tr><td>" + prizeDetails + "</td></tr>";
+			
+			
 			for(j=0;j<rankings.length;j++)
 			{
-				strDisplay = strDisplay + (j+1) + ". " + rankings[j].name + ", (" + rankings[j].totCount + " reactions), <a href = 'https://www.facebook.com/quarantreats2020/posts/103617644668360?comment_id=" + rankings[j].id + "'>VISIT</a><br>";
-				strShare = strShare + (j+1) + ". " + rankings[j].name + ", (" + rankings[j].totCount + " reactions)<br>";
-				strShare = strShare + "Click to vote: https://web.facebook.com/quarantreats2020/posts/103617644668360?comment_id=" + rankings[j].id + "<br><br>";
-				
-				if(j==9)
-				{
-					strDisplay = strDisplay + "<br>NOTE: Top 10 lang po ang may prize!<br><br>";
-					strShare = strShare + "<br>NOTE: Top 10 lang po ang may prize!<br><br>";
-				}
+				strDisplay = strDisplay + (j+1) + ". " + rankings[j].name + ", (" + rankings[j].totCount + " reactions), <a href = 'https://www.facebook.com/quarantreats2020/posts/" + postId + "?comment_id=" + rankings[j].id + "'>VISIT</a><br>";
+				strShare = strShare + "<tr><td>" + (j+1) + ". " + rankings[j].name + ", (" + rankings[j].totCount + " reactions)<br>";
+				strShare = strShare + "Entry: https://web.facebook.com/quarantreats2020/posts/" + postId + "?comment_id=" + rankings[j].id + "</td></tr>";
 				
 			}
+			
+			strShare = strShare + "</table>";
 			
 			//$('#result').html(strDisplay);
 			$('#forSharing').html(strShare);
@@ -120,14 +135,44 @@ $(document).ready(function(){
 </script>
 <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 
-Access Token: <input type = "text" id = "accessTok" /><br>
-Pull entries with more than: <input type = "text" id = "minReact" /> reactions.
-<input type = "button" id = "getdata" value = "GO!" />
+<input type="button" value="Dashboard" id="showDashboard" /><br>
 
+<div id = "dashboard">
+<table border = 1>
+<tr>
+	<td>Access Token:</td>
+	<td><input type = "text" id = "accessTok" style="width: 100%;" /></td>
+</tr>
+<tr>
+	<td>Page Id:</td>
+	<td><input type = "text" id = "pageId" style="width: 100%;" value='103424014687723' /></td>
+</tr>
+<tr>
+	<td>Post Id:</td>
+	<td><input type = "text" id = "postId" style="width: 100%;" /></td>
+</tr>
+<tr>
+	<td>Game Title:</td>
+	<td><input type = "text" id = "gameTitle" style="width: 100%;" /></td>
+</tr>
+<tr>
+	<td>Prize Details:</td>
+	<td><textarea id = "prizeDetails" style="width: 100%; height: 100%;"></textarea></td>
+</tr>
+<tr>
+	<td>Pull entries with more than: </td>
+	<td><input type = "text" id = "minReact" size="3" /> reactions.</td>
+</tr>
+<tr>
+	<td>Click here to get new data</td>
+	<td><input type = "button" id = "getdata" value = "GO!" style="width: 100%;" /></td>
+</table>
+</div>
 
 <div id = "forSharing">
 </div>
 <br><br>
+
 <div id = "result">
 </div>
 
