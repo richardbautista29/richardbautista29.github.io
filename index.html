@@ -20,6 +20,14 @@ $(document).ready(function(){
 		runNow();
 	});
 	
+	
+	$('#fastType').click(function(){
+	
+		$('#fastTypingResult').html("");
+		
+		runNow();
+	});
+	
 	//setInterval(function () {document.getElementById("getdata").click();}, 30000);
 	
 	
@@ -36,6 +44,36 @@ $(document).ready(function(){
 	var pageId;
 	var postId;
 	var gameTitle;
+	
+	var fastTypePostId;
+	
+	function fastTypeRun()
+	{
+		FB.init({
+		  appId            : '556278011536079',
+		  autoLogAppEvents : true,
+		  xfbml            : true,
+		  version          : 'v6.0'
+		});
+		
+		fastTypePostId = $('#fastTypePost').val();
+		
+		FB.api(
+		  '/' + fastTypePostId + '/comments',
+		  'GET',
+		  {"summary":"1","limit":"1000","access_token" : accessToken},
+		  function(response) {
+			  for(i=0; i<response.data.length; i++)
+			  {
+				console.log(response.data.created_time + " : " + response.data.from.name + " : " + response.data.message);
+			  }
+				
+		  }
+		);
+		
+	
+	}
+	
 	
 	function runNow()
 	{
@@ -178,6 +216,14 @@ $(document).ready(function(){
 
 <div id = "result">
 </div>
+
+<br>
+<input type = "button" id = "fastType" value = "FAST TYPING!" style="width: 100%;" />
+<input type = "text" id="fastTypePost" />
+<br><br>
+<div id = "fastTypingResult">
+</div>
+
 
 </body>
 </html>
