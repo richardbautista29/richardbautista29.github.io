@@ -64,10 +64,7 @@ $(document).ready(function(){
 		  'GET',
 		  {"summary":"1","limit":"1000","access_token" : accessToken},
 		  function(response) {
-			  for(i=0; i<response.data.length; i++)
-			  {
-				console.log(response.data.created_time + " : " + response.data.message);
-			  }
+			  console.log(response);
 				
 		  }
 		);
