@@ -63,9 +63,12 @@ $(document).ready(function(){
 		  '/' + fastTypePostId + '/comments',
 		  'GET',
 		  {"summary":"1","limit":"1000","access_token" : accessToken},
-		  function(response) {
-			  console.log(response);
-				
+		  function(response)
+		  {
+			for(i=0; i<response.data.length; i++)
+			{
+				console.log(response.data[i].created_time + " : " + response.data[i].from.name + " : " + response.data[i].message);
+			}  	
 		  }
 		);
 		
