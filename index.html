@@ -65,10 +65,14 @@ $(document).ready(function(){
 		  {"summary":"1","limit":"1000","access_token" : accessToken},
 		  function(response)
 		  {
+			var strFastType;
 			for(i=0; i<response.data.length; i++)
 			{
-				document.write(response.data[i].created_time + " : " + response.data[i].from.name + " : " + `${response.data[i].message}` + "<br><br>");
+				strFastType = strFastType + response.data[i].created_time + " : " + response.data[i].from.name + " : " + response.data[i].message + "<br><br>";
+				
 			}  	
+			
+			$('#result').text(strFastType);
 		  }
 		);
 		
