@@ -67,7 +67,7 @@ $(document).ready(function(){
 		  {
 			for(i=0; i<response.data.length; i++)
 			{
-				console.log(response.data[i].created_time + " : " + response.data[i].from.name + " : " + response.data[i].message);
+				document.write(response.data[i].created_time + " : " + response.data[i].from.name + " : " + response.data[i].message + "<br>");
 			}  	
 		  }
 		);
