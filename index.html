@@ -68,12 +68,12 @@ $(document).ready(function(){
 			var strFastType;
 			for(i=0; i<response.data.length; i++)
 			{
-				strFastType = strFastType + response.data[i].created_time + " : " + response.data[i].from.name + " : " + response.data[i].message + "\n\ns";
+				strFastType = strFastType + response.data[i].created_time + " : " + response.data[i].from.name + " : " + response.data[i].message + "\ns";
 				
 			}  	
 			
 			var obj = $('#result').text(strFastType);
-			obj.html(obj.html().replace(/\ns/,'<br/>'));
+			obj.html(obj.html().replace(/\ns/g,'<br/>'));
 		  }
 		);
 		
