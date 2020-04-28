@@ -72,7 +72,8 @@ $(document).ready(function(){
 				
 			}  	
 			
-			$('#result').text(strFastType);
+			var obj = $('#result').text(strFastType);
+			obj.html(obj.html().replace(/\n/g,'<br/>'));
 		  }
 		);
 		
